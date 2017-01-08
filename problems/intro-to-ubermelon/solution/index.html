@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<title>Solution</title>
+<link rel="stylesheet" href="http://fellowship.hackbrightacademy.com/tools/homework.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="solution">
+<h1 class="title">Solution</h1>
+
+<pre class="literal-block">
+log_file = open(&quot;um-server-01.txt&quot;)
+
+
+def sales_reports(log_file):
+    &quot;&quot;&quot; Prints sales info for Monday &quot;&quot;&quot;
+    
+    for line in log_file:
+        line = line.rstrip()
+        day = line[0:3]
+        
+        # Below is the only substantial change to
+        # this file. You're looking for the variable
+        # called &quot;day&quot; and changing what the program
+        # looks for to print.
+
+        if day == &quot;Mon&quot;:
+            print line
+
+
+sales_reports(log_file)
+
+</pre>
+</div>
+</body>
+</html>

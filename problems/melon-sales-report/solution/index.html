@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<title>Solution</title>
+<link rel="stylesheet" href="http://fellowship.hackbrightacademy.com/tools/homework.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="solution">
+<h1 class="title">Solution</h1>
+
+<div class="section" id="code">
+<h1>Code</h1>
+<pre class="literal-block">
+def order_tally(orders_by_type_file):
+    &quot;&quot;&quot;Return tally of melons by type.&quot;&quot;&quot;
+
+    tallies = {&quot;Musk&quot;: 0,
+               &quot;Hybrid&quot;: 0,
+               &quot;Watermelon&quot;: 0,
+               &quot;Winter&quot;: 0}
+
+    orders = open(orders_by_type_file)
+
+    for order in orders:
+        # Each line has &quot;id|melontype|count&quot;
+        # We want to split this and get the melontype and count.
+        data = order.split(&quot;|&quot;)
+        melon_type = data[1]
+        melon_count = int(data[2])
+        tallies[melon_type] = tallies[melon_type] + melon_count
+
+    orders.close()
+
+    return tallies
+
+
+def total_revenue(tallies):
+    &quot;&quot;&quot;Return total revenue in sales.&quot;&quot;&quot;
+
+    MELON_PRICES = {&quot;Musk&quot;: 1.15,
+                    &quot;Hybrid&quot;: 1.30,
+                    &quot;Watermelon&quot;: 1.75,
+                    &quot;Winter&quot;: 4.00}
+
+    total_revenue = 0
+
+    print &quot;TOTAL REVENUE&quot;
+
+    for melon_type in tallies:
+        price = MELON_PRICES[melon_type]
+        melon_revenue = price * tallies[melon_type]
+        total_revenue = total_revenue + melon_revenue
+
+        print &quot;We sold {:,} {} melons at ${:.2f} each for a total of ${:,.2f}&quot;.format(
+            tallies[melon_type],
+            melon_type,
+            price,
+            melon_revenue
+        )
+
+    return total_revenue
+
+
+def sales_comparison(orders_with_sales_file):
+    &quot;&quot;&quot;Compare online and salesperson-generated sales.&quot;&quot;&quot;
+
+    orders = open(orders_with_sales_file)
+    online_revenue = 0
+    salespeople_revenue = 0
+
+    for order in orders:
+        # The third column of each line has either the saleperson
+        # name or ONLINE. We'll find that and then use it to decide
+        # who gets credit for this sale.
+        data = order.split(&quot;|&quot;)
+
+        if data[2] == &quot;ONLINE&quot;:
+            online_revenue = online_revenue + float(data[3])
+
+        else:
+            salespeople_revenue = salespeople_revenue + float(data[3])
+
+    print &quot;SALES DATA&quot;
+    print &quot;Salespeople generated ${:,.2f} in revenue.&quot;.format(salespeople_revenue)
+    print &quot;Internet sales generated ${:,.2f} in revenue.&quot;.format(online_revenue)
+
+    if salespeople_revenue &gt; online_revenue:
+        print &quot;Guess there's some value to those salespeople after all.&quot;
+
+    else:
+        print &quot;Time to fire the sales team! Online sales rule all!&quot;
+
+    orders.close()
+
+
+# Get the tallies by melon type
+melon_tallies = order_tally(&quot;orders-by-type.txt&quot;)
+
+# Print total revenue report
+total_revenue(melon_tallies)
+
+print
+
+# Print online-v-salesperson report
+sales_comparison(&quot;orders-with-sales.txt&quot;)
+
+</pre>
+</div>
+<div class="section" id="notes">
+<h1>Notes</h1>
+<p>There are lots of nice Python style points being demonstrated
+here:</p>
+<ul class="simple">
+<li>good choice of variable names (and use of <tt class="docutils literal">snake_case</tt>)</li>
+<li>breaking things into well-named functions</li>
+<li>lots of whitespace to make it easier to see the organization</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
