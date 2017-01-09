@@ -77,12 +77,14 @@ def smallest_int(numbers):
         >>> smallest_int([]) is None
         True
     """
-
-    smallest = None
-    for num in numbers:
-      if num < smallest:
-        smallest = num  # is it possible to make this assignment nested into list comprehension format?
-    return smallest
+    if numbers[:] == 0:
+      return None
+    else:
+      smallest = numbers[0]
+      for num in numbers:
+        if num < smallest:
+          smallest = num  # is it possible to make this assignment nested into list comprehension format?
+      return smallest
 
 
 def largest_int(numbers):
@@ -321,11 +323,12 @@ def reverse_list_in_place(items):
         ['I', 'love', 'cookies']
     """
 
-    items_copy = items[::-1]
-    items = items_copy
-    return items
+    # items_copy = items[::-1]
+    # items = items_copy
 
-    # the struggle is real
+    items[:] = items[::-1]
+
+    # struggled with this (had return when it was supposed to not return anything)
 
 
 def duplicates(items):

@@ -40,42 +40,75 @@ orig = ["apple", "berry", "cherry", "cherry"]
 # # print orig
 
 
-def duplicates(items):
-    """Return list of words from input list which were duplicates.
+# def duplicates(items):
+#     """Return list of words from input list which were duplicates.
 
-    Return a list of words which are duplicated in the input list.
-    The returned list should be in ascending order.
+#     Return a list of words which are duplicated in the input list.
+#     The returned list should be in ascending order.
 
-    For example::
+#     For example::
 
-        >>> duplicates(
-        ...     ["apple", "banana", "banana", "cherry", "apple"]
-        ... )
-        ['apple', 'banana']
+#         >>> duplicates(
+#         ...     ["apple", "banana", "banana", "cherry", "apple"]
+#         ... )
+#         ['apple', 'banana']
 
-        >>> duplicates([1, 2, 2, 4, 4, 4, 7])
-        [2, 4]
+#         >>> duplicates([1, 2, 2, 4, 4, 4, 7])
+#         [2, 4]
 
-    You should do this without changing the original list::
+#     You should do this without changing the original list::
 
-        >>> orig = ["apple", "apple", "berry"]
-        >>> duplicates(orig)
-        ['apple']
+#         >>> orig = ["apple", "apple", "berry"]
+#         >>> duplicates(orig)
+#         ['apple']
 
-        >>> orig
-        ['apple', 'apple', 'berry']
+#         >>> orig
+#         ['apple', 'apple', 'berry']
+#     """
+#     duplicates = items[:]  # show resulting duplicates only
+#     duplicates_set = set(duplicates)  # items with duplicates removed
+#     no_duplicates = list(duplicates_set)  # convert back to list
+
+#     for item in no_duplicates:
+#       position = duplicates.index(item)
+#       del duplicates[position]
+#     else:
+#       pass
+
+#     return sorted(duplicates)
+
+# print duplicates(orig)
+# print orig
+
+
+
+def print_indices(items):
+    """Print index of each item in list, followed by item itself.
+
+    Do this without using a "counting variable" --- that is, don't
+    do something like this::
+
+        count = 0
+        for item in list:
+            print count
+            count = count + 1
+
+    Output should look like this::
+
+        >>> print_indices(["Toyota", "Jeep", "Volvo"])
+        0 Toyota
+        1 Jeep
+        2 Volvo
+
+        >>> print_indices(["Toyota", "Jeep", "Toyota", "Volvo"])
+        0 Toyota
+        1 Jeep
+        2 Toyota
+        3 Volvo
+
     """
-    duplicates = items[:]  # show resulting duplicates only
-    duplicates_set = set(duplicates)  # items with duplicates removed
-    no_duplicates = list(duplicates_set)  # convert back to list
+    counts = [[count, item] for count, item in enumerate(items)]
+    for count in counts:
+      print count
 
-    for item in no_duplicates:
-      position = duplicates.index(item)
-      del duplicates[position]
-    else:
-      pass
-
-    return sorted(duplicates)
-
-print duplicates(orig)
-print orig
+print_indices(orig)

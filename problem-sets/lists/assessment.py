@@ -1,4 +1,4 @@
-"""List Assessment 
+"""List Assessment
 
 Edit the functions until all of the doctests pass when
 you run this file.
@@ -17,7 +17,7 @@ def all_odd(numbers):
         []
     """
 
-    return ['the wrong thing']
+    return [number for number in numbers if number % 2]
 
 
 def print_indices(items):
@@ -43,10 +43,17 @@ def print_indices(items):
         1 Jeep
         2 Toyota
         3 Volvo
-    
+
     """
 
-    print "Nothing at all"
+    ## .index() looks for the first match in the list and uses that index
+    ## does not work with duplicate items in list
+    # for item in items:
+    #     print items.index(item), item
+
+    counts = [[count, item] for count, item in enumerate(items)]
+    for count, item in counts:
+        print count, item
 
 
 def foods_in_common(foods1, foods2):
@@ -66,7 +73,7 @@ def foods_in_common(foods1, foods2):
         ...     ["hummus", "cheese", "beets", "kale", "lentils", "bagel", "cake" ]
         ... )
         ['bagel', 'cake', 'cheese', 'kale']
-        
+
     If there are no foods in common, return an empty list::
 
         >>> foods_in_common(
@@ -77,7 +84,23 @@ def foods_in_common(foods1, foods2):
 
     """
 
-    return ['the wrong thing']
+    ## solved this way first:
+    # common_foods = []
+
+    # for food in foods1:
+    #     if food in foods2:
+    #         common_foods.append(food)
+    # common_foods.sort()
+
+    # return common_foods
+
+
+    # sets can help find a union between two sets of data
+
+    foods1 = set(foods1)
+    foods2 = set(foods2)
+    common_foods = sorted(list(foods1 & foods2))
+    return common_foods
 
 
 def every_other_item(items):
@@ -94,7 +117,7 @@ def every_other_item(items):
        ['you', 'are', 'good', 'at', 'code']
     """
 
-    return ['the wrong thing']
+    return items[::2]
 
 
 def largest_n_items(items, n):
@@ -118,8 +141,17 @@ def largest_n_items(items, n):
         >>> largest_n_items([3, 3, 3, 2, 1], 2)
         [3, 3]
     """
+    sorted_items = sorted(items)
 
-    return []
+    if n == 0:
+        return []
+    else:
+        return sorted_items[-n:]
+
+    # can this be written without if statement?
+
+
+# time spent: ~30 minutes
 
 
 #####################################################################
