@@ -51,13 +51,16 @@ def print_indices(items):
     # for item in items:
     #     print items.index(item), item
 
-    # counts = [[count, item] for count, item in enumerate(items)]
-    # for count, item in counts:
-    #     print count, item
-
-    for count in range(0,len(items)):
-      for item in items:
+    counts = [[count, item] for count, item in enumerate(items)]
+    for count, item in counts:
         print count, item
+
+    ## third attempt to try to write function without enumerate or counter
+    # for count in range(len(items)):
+    #   items_list = []
+    #   for item in items:
+    #     items_list.append(item)
+    #   print count, items_list[count]
 
 
 def foods_in_common(foods1, foods2):
