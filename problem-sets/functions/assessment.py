@@ -59,14 +59,63 @@ included in the doctest.
 #    (a) Write a function that takes a town name as a string and evaluates to
 #        `True` if it is your hometown, and `False` otherwise.
 
+def is_hometown(townname):
+    """
+    Returns True if townname matches hometown, otherwise returns False.
+
+    Example:
+        >>> is_hometown('San Francisco')
+        True
+
+        >>> is_hometown('Boston')
+        False
+
+    """
+    if townname.lower() == 'san francisco':
+        return True
+    else:
+        return False
+
+
 #    (b) Write a function that takes a first and last name as arguments and
 #        returns the concatenation of the two names in one string.
+
+def concatenate_name(firstname, lastname):
+    """
+    Returns concatenated first name and last name in a string, separated by a space.
+
+    Example:
+        >>> concatenate_name('Joanne','Yeung')
+        'Joanne Yeung'
+    """
+    return firstname + ' ' + lastname
 
 #    (c) Write a function that takes a home town, a first name, and a last name
 #        as arguments, calls both functions from part (a) and (b) and prints
 #        "Hi, 'full name here', we're from the same place!", or "Hi 'full name
 #        here', where are you from?" depending on what the function from part
 #        (a) evaluates to.
+
+def greeting(hometown, firstname, lastname):
+    """
+    Greets individual by first and last name and evaluates if their hometown matches yours.
+
+    Examples:
+        >>> greeting('Paris', 'Michele', 'Leon')
+        'Hi Michele Leon, where are you from?'
+
+        >>> greeting('San Francisco', 'Patrick', 'Brady')
+        "Hi, Patrick Brady, we're from the same place!"
+    """
+    fullname = concatenate_name(firstname, lastname)
+
+    if is_hometown(hometown):
+        return 'Hi, {}, we\'re from the same place!'.format(fullname)
+    else:
+        return 'Hi {}, where are you from?'.format(fullname)
+
+    # Why does the second test fail (Patrick Brady) when the greeting response is
+    # wrapped in single quotes instead of double?
 
 
 
@@ -82,7 +131,10 @@ included in the doctest.
 def is_berry(fruit):
     """Determines if fruit is a berry"""
 
-    pass
+    if fruit.lower() in ('strawberry', 'cherry', 'blackberry'):
+        return True
+    else:
+        return False
 
 
 # (b) Write another function, shipping_cost(), which calculates shipping cost
@@ -93,7 +145,10 @@ def is_berry(fruit):
 def shipping_cost(fruit):
     """Calculates shipping cost of fruit"""
 
-    pass
+    if is_berry(fruit):
+        return 0
+    else:
+        return 5
 
 
 # 2. Make a function that takes in a number and a list of numbers. It should
@@ -104,7 +159,7 @@ def append_to_list(lst, num):
     """Creates a new list consisting of the old list with the given number
        added to the end."""
 
-    pass
+    return lst + [num]
 
 
 
@@ -124,9 +179,33 @@ def append_to_list(lst, num):
 #    Your function should return the total cost of the item, including tax and
 #    fees.
 
-def calculate_price(FILL_ME_IN):
+def calculate_price(item_price, state, tax=.05):
+    """
+    Calculates total cost of item including state tax rates.
+    """
 
-    pass
+    item_price_including_tax = float(item_price * (1 + tax))
+    total_cost = None
+
+    if state == 'CA':
+        total_cost = item_price_including_tax * 1.03
+
+    elif state == 'PA':
+        total_cost = item_price_including_tax + 2
+
+    elif state == 'MA':
+        if item_price < 100:
+            total_cost = item_price_including_tax + 1
+        else:
+            total_cost = item_price_including_tax + 3
+
+    else:
+        if tax == 0:
+            return item_price
+        else:
+            total_cost = item_price_including_tax
+
+    return float("{0:.1f}".format(total_cost))
 
 
 ###############################################################################
@@ -143,6 +222,24 @@ def calculate_price(FILL_ME_IN):
 # isn't something we've discussed yet in class; you might need to google how to
 # write a Python function that takes in an arbitrary number of arguments.
 
+def create_list(*args):
+    """
+    Creates and returns a list which adds each given argument to the list
+    in the order it was given.
+
+    Examples:
+        >>> create_list('ask', 'me', 'anything', 9)
+        ['ask', 'me', 'anything', 9]
+
+        >>> create_list(['hello'], 'four', 10, 1, 3)
+        [['hello'], 'four', 10, 1, 3]
+    """
+
+    lst = []
+    for arg in args:
+        lst.append(arg)
+    return lst
+
 
 # 2. Make a new function with a nested inner function.
 # The outer function will take in a word.
@@ -155,6 +252,23 @@ def calculate_price(FILL_ME_IN):
 
 #>>> outer("Balloonicorn")
 #('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
+def outer_function(word):
+    """
+    Returns the original word given and the word listed 3 times.
+
+    Example:
+        >>> outer_function("Balloonicorn")
+        ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+    """
+
+    def inner_function():
+        return word * 3
+    return word, inner_function()
+
+
+
+# time spent: ~ 1 hour 30 minutes
 
 
 ###############################################################################
