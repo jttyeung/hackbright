@@ -413,6 +413,8 @@ def find_letter_indices(words, letter):
     return letter_indices
 
 
+# time spent ~3 hours
+
 #####################################################################
 # END OF PRACTICE: You can ignore everything below.
 

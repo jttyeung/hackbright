@@ -51,8 +51,12 @@ def print_indices(items):
     # for item in items:
     #     print items.index(item), item
 
-    counts = [[count, item] for count, item in enumerate(items)]
-    for count, item in counts:
+    # counts = [[count, item] for count, item in enumerate(items)]
+    # for count, item in counts:
+    #     print count, item
+
+    for count in range(0,len(items)):
+      for item in items:
         print count, item
 
 
