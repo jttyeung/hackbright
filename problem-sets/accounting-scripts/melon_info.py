@@ -18,7 +18,9 @@ from melons import melons
 #     weight = melons[melon_name]['weight']
 #     rind_color = melons[melon_name]['rind_color']
 
-#     print "{}s {} seeds, have {} flesh, have a {} rind, weigh {}, and are ${:.2f}".format(melon_name, have_or_have_not, flesh_color, rind_color, weight, price)
+#     print "{}s {} seeds, have {} flesh, have a {} rind, weigh {}, and are
+#     ${:.2f}".format(melon_name, have_or_have_not, flesh_color, rind_color,
+#     weight, price)
 
 
 # for melon in melons:
