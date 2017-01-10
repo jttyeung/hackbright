@@ -31,6 +31,7 @@ melons = {
         price: 0.99,
         seedless = False,
         flesh_color: None,
-        weight: None, rind: None
+        weight: None,
+        rind: None
         }
 }
