@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<title>Solution</title>
+<link rel="stylesheet" href="http://fellowship.hackbrightacademy.com/tools/homework.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="solution">
+<h1 class="title">Solution</h1>
+
+<div class="section" id="code">
+<h1>Code</h1>
+<pre class="literal-block">
+&quot;&quot;&quot;
+Prints out all the melons in our inventory
+
+&quot;&quot;&quot;
+
+from melons import melons
+
+
+def print_all_melons(melons_data):
+    for melon, attributes in melons_data.items():
+        print melon.upper()
+        for attribute, value in attributes.items():
+            print &quot;{}: {}&quot;.format(attribute, value)
+        print '==================================='
+
+
+print_all_melons(melons)
+
+</pre>
+</div>
+<div class="section" id="notes">
+<h1>Notes</h1>
+<ul class="simple">
+<li>Why is the dictionary more effective/flexible this way?
+Be prepared to discuss this.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
