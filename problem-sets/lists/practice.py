@@ -77,7 +77,7 @@ def smallest_int(numbers):
         >>> smallest_int([]) is None
         True
     """
-    if numbers[:] == 0:
+    if len(numbers[:]) == 0:
       return None
     else:
       smallest = numbers[0]
@@ -105,12 +105,14 @@ def largest_int(numbers):
         >>> largest_int([]) is None
         True
     """
-
-    largest = None
-    for num in numbers:
-      if num > largest:
-        largest = num
-    return largest
+    if len(numbers[:]) == 0:
+      return None
+    else:
+      largest = None
+      for num in numbers:
+        if num > largest:
+          largest = num
+      return largest
 
 
 def halvesies(numbers):
@@ -357,7 +359,7 @@ def duplicates(items):
         ['apple', 'apple', 'berry']
     """
 
-    duplicates = items[:]  # show resulting duplicates only
+    duplicates = items[:]  # copy list via slice
     duplicates_set = set(duplicates)  # items with duplicates removed
     no_duplicates = list(duplicates_set)  # convert back to list
 
@@ -367,7 +369,8 @@ def duplicates(items):
     else:
       pass
 
-    return sorted(duplicates)
+    unique_duplicates = set(duplicates)  # take a unique set of the duplicates
+    return sorted(unique_duplicates)
 
 
     # the struggle is real. can't delete a duplicate if instance occurs more than twice
