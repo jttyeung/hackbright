@@ -3,7 +3,7 @@ import sys
 
 
 file_path = sys.argv[1]
-
+ngrams = int(sys.argv[2])
 
 def open_and_read_file(file_path):
     """Takes file path as string; returns text as string.
@@ -21,7 +21,7 @@ def open_and_read_file(file_path):
 
 file_string = open_and_read_file(file_path)
 
-def make_chains(text_string):
+def make_chains(file_string, ngrams):
     """Takes input text as string; returns _dictionary_ of markov chains.
 
     A chain will be a key that consists of a tuple of (word1, word2)
@@ -37,12 +37,12 @@ def make_chains(text_string):
     chains = {}
     index = 0
     word_list = file_string.split()
-    while index < len(word_list) - 2:
-        key_words = tuple(word_list[index:index + 2])
+    while index < len(word_list) - ngrams:
+        key_words = tuple(word_list[index:index + ngrams])
         if key_words not in chains:
-            chains[key_words] = [word_list[index + 2]]
+            chains[key_words] = [word_list[index + ngrams]]
         else:
-            chains[key_words].append(word_list[index + 2])
+            chains[key_words].append(word_list[index + ngrams])
         index += 1
 
     return chains
@@ -52,16 +52,41 @@ def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
 
     text = ""
-    first_text = choice(chains.keys())
-    text += "{} {} {} ".format(first_text[0], first_text[1], chains.get(first_text)[0])
-    random_value = choice(chains.get(first_text))
-    next_key = (first_text[1], random_value)
+    chains_key = choice(chains.keys())
+
+    for n in range(ngrams):  # add initial ngram key words to text
+        text += "{} ".format(chains_key[n])
+
+    random_value = choice(chains.get(chains_key))  # select a random value from the ngram key words
+    text += "{} ".format(random_value)  # add random initial value to text
+    next_key = []  # create an empty list for the next key
+
+    for position in range(ngrams + 1):
+        if position == 0:  # skip if first position - already appended above
+            pass
+        elif position < ngrams:
+            next_key.append(chains_key[position])
+        else:
+            next_key.append(random_value)
+
+    next_key = tuple(next_key)  # rebind next_key list as a tuple
 
     while next_key in chains:
         try:
             random_value = choice(chains.get(next_key))
             text += "{} ".format(random_value)
-            next_key = (next_key[1], random_value)
+            chains_key = next_key
+            next_key = []
+
+            for position in range(ngrams + 1):
+                if position == 0:  # skip if first position - already appended above
+                    pass
+                elif position < ngrams:
+                    next_key.append(chains_key[position])
+                else:
+                    next_key.append(random_value)
+
+            next_key = tuple(next_key)
         except KeyError:
             break
     return text
@@ -71,7 +96,7 @@ def make_text(chains):
 input_text = open_and_read_file(file_path)
 
 # Get a Markov chain
-chains = make_chains(input_text)
+chains = make_chains(input_text, ngrams)
 
 # Produce random text
 random_text = make_text(chains)
