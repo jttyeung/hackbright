@@ -49,15 +49,24 @@ def make_text(chains):
 
     text = ""
     first_text = choice(chains.keys())
-    text += "{} {} ".format(first_text[0], first_text[1])
+    text += "{} {} {} ".format(first_text[0], first_text[1], chains.get(first_text))
     next_key = (first_text[1], chains.get(first_text))
 
-    for next_key in chains:
+    # print first_text, "-----1st"
+    # print next_key, "-----next"
+    # print chains.get(first_text), "-----value of tuple"
+    # print text, "-----text"
+    # print
+
+    while next_key in chains:
         try:
+            text += "{} ".format(chains.get(next_key))
             next_key = (next_key[1], chains.get(next_key))
-            text += "{} {} ".format(next_key[0], next_key[1])
+            # print next_key, "-----next key"
+            # print text
         except KeyError:
-            return text
+            break
+    return text
 
 
 # Open the file and turn it into one long string
