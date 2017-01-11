@@ -2,7 +2,7 @@ from random import choice
 import sys
 
 
-file_path = "green-eggs.txt"
+file_path = sys.argv[1]
 
 
 def open_and_read_file(file_path):
@@ -38,7 +38,11 @@ def make_chains(text_string):
     index = 0
     word_list = file_string.split()
     while index < len(word_list) - 2:
-        chains[tuple(word_list[index:index + 2])] = word_list[index + 2]
+        key_words = tuple(word_list[index:index + 2])
+        if key_words not in chains:
+            chains[key_words] = [word_list[index + 2]]
+        else:
+            chains[key_words].append(word_list[index + 2])
         index += 1
 
     return chains
@@ -49,21 +53,15 @@ def make_text(chains):
 
     text = ""
     first_text = choice(chains.keys())
-    text += "{} {} {} ".format(first_text[0], first_text[1], chains.get(first_text))
-    next_key = (first_text[1], chains.get(first_text))
-
-    # print first_text, "-----1st"
-    # print next_key, "-----next"
-    # print chains.get(first_text), "-----value of tuple"
-    # print text, "-----text"
-    # print
+    text += "{} {} {} ".format(first_text[0], first_text[1], chains.get(first_text)[0])
+    random_value = choice(chains.get(first_text))
+    next_key = (first_text[1], random_value)
 
     while next_key in chains:
         try:
-            text += "{} ".format(chains.get(next_key))
-            next_key = (next_key[1], chains.get(next_key))
-            # print next_key, "-----next key"
-            # print text
+            random_value = choice(chains.get(next_key))
+            text += "{} ".format(random_value)
+            next_key = (next_key[1], random_value)
         except KeyError:
             break
     return text
