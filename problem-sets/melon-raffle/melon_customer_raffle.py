@@ -1,4 +1,4 @@
-from random import choice
+import random
 
 
 class Customer(object):
