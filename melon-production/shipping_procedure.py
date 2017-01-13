@@ -6,6 +6,14 @@ import sys
 
 MELON_LIMIT = 200
 
+class Squash(Melon):
+  def __init__(self, melon_type):
+    super(Squash, self).__init__(melon_type)
+    self.melon_type = melon_type
+
+  def prep_painting():
+    robots.painterbot.paint(self)
+
 
 def show_help():
     print """
