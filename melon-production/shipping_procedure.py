@@ -11,7 +11,9 @@ class Squash(Melon):
     super(Squash, self).__init__(melon_type)
     self.melon_type = melon_type
 
-  def prep_painting():
+  def prep_and_paint():
+    robots.cleanerbot.clean(self)
+    robots.stickerbot.apply_logo(self)
     robots.painterbot.paint(self)
 
 
