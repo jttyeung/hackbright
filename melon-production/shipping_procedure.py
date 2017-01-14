@@ -1,20 +1,10 @@
 """Shipping procedures for Ubermelon."""
 
-from melons import Melon
+from melons import Melon, Squash
 import robots
 import sys
 
 MELON_LIMIT = 200
-
-class Squash(Melon):
-  def __init__(self, melon_type):
-    super(Squash, self).__init__(melon_type)
-    self.melon_type = melon_type
-
-  def prep_and_paint():
-    robots.cleanerbot.clean(self)
-    robots.stickerbot.apply_logo(self)
-    robots.painterbot.paint(self)
 
 
 def show_help():

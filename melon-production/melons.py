@@ -31,4 +31,10 @@ class Melon(object):
                                              self.weight,
                                              self.melon_type)
 
-# FIXME: Add Squash class definition here.
+
+class Squash(Melon):
+
+  def prep(self):
+    robots.cleanerbot.clean(self)
+    robots.painterbot.paint(self)
+    robots.stickerbot.apply_logo(self)
