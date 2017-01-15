@@ -250,7 +250,7 @@ def kids_game(names):
                 else:
                     break
         except KeyError:
-            print 'hey there'
+            return
 
     return game_result
 
