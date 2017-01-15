@@ -28,8 +28,13 @@ def count_words(phrase):
         >>> print_dict(count_words("Porcupine see, porcupine do."))
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
+    list_of_words = phrase.split(' ')
+    word_frequencies = {}
 
-    return {}
+    for word in list_of_words:
+        word_frequencies[word] = word_frequencies.get(word, 0) + 1
+
+    return word_frequencies
 
 
 def get_melon_price(melon_name):
@@ -53,8 +58,17 @@ def get_melon_price(melon_name):
         >>> get_melon_price('Tomato')
         'No price found'
     """
+    melon_prices = {
+        "Watermelon": 2.95,
+        "Cantaloupe": 2.50,
+        "Musk": 3.25,
+        "Christmas": 14.25
+    }
 
-    return 0
+    if melon_name in melon_prices:
+        return melon_prices[melon_name]
+    else:
+        return 'No price found'
 
 
 def word_length_sorted(words):
@@ -75,8 +89,19 @@ def word_length_sorted(words):
         >>> word_length_sorted(["porcupine", "ok"])
         [(2, ['ok']), (9, ['porcupine'])]
     """
+    word_and_count_dict = {}
 
-    return []
+    for word in words:
+        count_letters = 0
+        for letter in word:
+            count_letters += 1
+        if count_letters in word_and_count_dict.keys():
+            word_and_count_dict[count_letters].append(word)
+        else:
+            word_and_count_dict[count_letters] = [word]
+        word_and_count_dict[count_letters].sort()  # sort dictionary values in place
+
+    return sorted(list(word_and_count_dict.items()))
 
 
 def translate_to_pirate_talk(phrase):
@@ -117,8 +142,32 @@ def translate_to_pirate_talk(phrase):
         >>> translate_to_pirate_talk("my student is not a man!")
         'me swabbie be not a man!'
     """
+    pirate_dict = {
+        'sir': 'matey',
+        'hotel': 'fleabag inn',
+        'student': 'swabbie',
+        'man': 'matey',
+        'professor': 'foul blaggart',
+        'restaurant': 'galley',
+        'your': 'yer',
+        'excuse': 'arr',
+        'students': 'swabbies',
+        'are': 'be',
+        'restroom': 'head',
+        'my': 'me',
+        'is': 'be'
+    }
 
-    return ""
+    english_word_list = phrase.split(' ')
+    pirate_phase_list = []
+
+    for word in english_word_list:
+        if word in pirate_dict:
+            pirate_phase_list.append(pirate_dict[word])
+        else:
+            pirate_phase_list.append(word)
+
+    return (' ').join(pirate_phase_list)
 
 
 def kids_game(names):
@@ -167,7 +216,57 @@ def kids_game(names):
     good solutions here will definitely require a dictionary.
     """
 
-    return []
+    # need a dictionary with a letter as a key and list of words that start
+    # with that letter as the value(s)
+    # create a dictionary without the first name of the list
+
+    kids_dict = {}
+    first_name = names[0]
+    game_result = [first_name]
+    names = names[1:]
+
+    for name in names:
+        if name[0] not in kids_dict:
+            kids_dict[name[0]] = [name]
+        else:
+            kids_dict[name[0]].append(name)
+
+    # for each name starting with the first, check the last letter of the name
+    # and use that as the key to find the next word available in the dictionary list
+
+    current_name = first_name
+    current_letter = current_name[-1]
+
+    for names in names:
+        try:
+            if current_letter in kids_dict.keys():
+                game_result.append(kids_dict[current_letter][0])
+                delete_letter = kids_dict[current_letter][0][0]  # need to save the letter key to delete from in dict
+                current_letter = kids_dict[current_letter][0][-1]
+                del kids_dict[delete_letter][0]
+
+                if len(kids_dict[current_letter]) > 0:
+                    current_name = kids_dict[current_letter][0]
+                else:
+                    break
+        except KeyError:
+            print 'hey there'
+
+    return game_result
+
+# names = ['bagon', 'nosepass', 'starly', 'yamask', 'kalob', 'baltoy']
+# game_result = ['bagon']
+
+# current_name = 'bagon'
+# current_name[-1] = n
+# kids_dict[n][0] = nosepass
+# game_result = ['bagon', 'nosepass']
+# current_letter = s
+# del 'nosepass' from dict
+
+# current_name = 'nosepass'
+
+
 
 #####################################################################
 # You can ignore everything below this.
