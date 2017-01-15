@@ -32,7 +32,7 @@ def without_duplicates(words):
         [2, 33333, 111111]
     """
 
-    return []
+    return list(set(words))
 
 
 def find_unique_common_items(items1, items2):
@@ -61,8 +61,10 @@ def find_unique_common_items(items1, items2):
         >>> sorted(find_unique_common_items(["2", "1", 2], [2, 1]))
         [2]
     """
+    items1_set = set(items1)
+    items2_set = set(items2)
 
-    return []
+    return [unique_items for unique_items in items1_set & items2_set]
 
 def get_sum_zero_pairs(numbers):
     """Given list of numbers, return list of pairs summing to 0.
@@ -90,8 +92,19 @@ def get_sum_zero_pairs(numbers):
         >>> sort_pairs( get_sum_zero_pairs([1, 3, -1, 1, 1, 0]) )
         [[-1, 1], [0, 0]]
     """
+    numbers_set = set(numbers)
+    sum_zero_pairs_set = set()
 
-    return []
+    for number in numbers_set:
+        if number > 0 and -number in numbers_set:
+            sum_zero_pair = (-number, number)
+            sum_zero_pairs_set.add(sum_zero_pair)
+        elif number == 0 and numbers.index(0) != numbers[::-1].index(0):
+            sum_zero_pairs_set.add((0,0))
+
+    return sum_zero_pairs_set
+
+
 
 
 def top_chars(phrase):
@@ -118,8 +131,28 @@ def top_chars(phrase):
     Do not count spaces, but count all other characters.
 
     """
+    common_char = {}
+    most_common_char = []
 
-    return []
+    for char in phrase:
+        char = char.lower()
+        if char.isspace() == False:
+            common_char[char] = common_char.get(char, 0) + 1
+
+    largest = 0
+    for chars in common_char:
+        if common_char[chars] >= largest:
+            largest = common_char[chars]
+
+
+    for chars, num in common_char.items():
+        if num == largest:
+            most_common_char.append(chars)
+
+    return most_common_char
+
+
+# time spent ~ 1 hr 20 min
 
 #####################################################################
 # You can ignore everything below this.
