@@ -238,19 +238,11 @@ def kids_game(names):
     current_letter = current_name[-1]
 
     for names in names:
-        try:
-            if current_letter in kids_dict.keys():
-                game_result.append(kids_dict[current_letter][0])
-                delete_letter = kids_dict[current_letter][0][0]  # need to save the letter key to delete from in dict
-                current_letter = kids_dict[current_letter][0][-1]
-                del kids_dict[delete_letter][0]
-
-                if len(kids_dict[current_letter]) > 0:
-                    current_name = kids_dict[current_letter][0]
-                else:
-                    break
-        except KeyError:
-            return
+        if current_letter in kids_dict.keys() and len(kids_dict[current_letter]) > 0:  # only continue if the current letter is a key in dict and there is a value for it
+            game_result.append(kids_dict[current_letter][0])
+            delete_letter = kids_dict[current_letter][0][0]  # need to save the first letter key to delete from in dict
+            current_letter = kids_dict[current_letter][0][-1]
+            del kids_dict[delete_letter][0]
 
     return game_result
 
