@@ -41,6 +41,23 @@ class Student(object):
         self.address =  address
 
 
+class Question(object):
+    """Defines a new question"""
+
+    def __init__(self, question, answer):
+        """Creates a new question and answer"""
+        self.question = question
+        self.answer = answer
+
+    def ask_and_evaluate(self):
+        """Evaluates truthiness of answer to question"""
+        student_answer = raw_input(self.question + ' > ')
+        if student_answer == self.answer:
+            return True
+        else:
+            return False
+
+
 class Exam(Question):
     """Defines a new exam"""
 
@@ -60,7 +77,7 @@ class Exam(Question):
         count = 1
         # for question in exam, ask and evaluate the question, adding 1.0 to the score for each correct answer and then dividing the score by the total number of questions asked
         for question in self.questions:
-            if self.ask_and_evaluate(question) == True:
+            if self.ask_and_evaluate() == True:
                 score += 1.0
             count += 1
 
@@ -73,30 +90,16 @@ class Exam(Question):
             return score/count
 
 
-
-class Question(object):
-    """Defines a new question"""
-
-    def __init__(self, question, answer):
-        """Creates a new question and answer"""
-        self.question = question
-        self.answer = answer
-
-    def ask_and_evaluate(self):
-        """Evaluates truthiness of answer to question"""
-        student_answer = raw_input(self.question + ' > ')
-        if student_answer == self.answer:
-            return True
-        else:
-            return False
-
-
 def take_test(exam, student):
+    """Administers exam to student"""
+
     student.score = exam.administer()
     return '{} scored a {} on the {}'.format(student.firstname, student.score, exam.name)
 
 
 def example():
+    """Example exam"""
+
     question_1 = Question('How many licks does it take to get to the center of the lollipop?', 3)
     question_2 = Question('How much wood could a wood chuck chuck if a wood chuck could chuck wood?', '700 pounds')
     question_3 = Question('What is the air-speed velocity of an unladen swallow?', 'an African or European swallow?')
