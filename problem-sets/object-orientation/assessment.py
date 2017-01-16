@@ -96,11 +96,11 @@ def take_test(exam, student):
     return '{} scored a {} on the {}'.format(student.firstname, student.score, exam.name)
 
 
-def example(firstname, lastname, address):
+def example():
     question_1 = Question('How many licks does it take to get to the center of the lollipop?', 3)
     question_2 = Question('How much wood could a wood chuck chuck if a wood chuck could chuck wood?', '700 pounds')
     question_3 = Question('What is the air-speed velocity of an unladen swallow?', 'an African or European swallow?')
-    sample_student = Student(firstname, lastname, address)
+    sample_student = Student('student_first', 'student_last', 'sample address')
     sample_exam = Exam('sample')
     sample_exam.add_question(question_1.question, question_1.answer)
     sample_exam.add_question(question_2.question, question_2.answer)
