@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+    <title>A Compliment</title>
+    <link rel="stylesheet" type="text/css" href="/static/madlibs.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+</head>
+<body>
+    <p>Hi {{ person }}!</p>
+    <p>Would you like to play a game?</p>
+    <form action="/game">
+        <input type="radio" name="play_game" value="yes">Yes
+        <input type="radio" name="play_game" value="no">No
+        <p><input type="submit"></p>
+    </form>
+</body>
+</html>

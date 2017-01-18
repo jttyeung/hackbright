@@ -1,0 +1,26 @@
+* {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+h1 {
+    color: #99ff00;
+    background-color: black;
+    text-align: center;
+}
+
+p {
+    text-align: right;
+}
+
+#person {
+    text-align: left;
+    font-weight: bold;
+}
+
+#color{
+    text-align: center;
+}
+
+#adjective {
+    text-align: left;
+}
