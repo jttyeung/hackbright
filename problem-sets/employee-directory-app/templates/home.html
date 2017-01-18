@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/static/css/cover.css">
+        <title>Ubermelon. Melons when you want them.</title>
+    </head>
+    <body>
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="inner cover">
+              <img src="/static/img/ubermelonsmall.png">
+              <h1 class="cover-heading">Ubermelon.</h1>
+            <p class="lead">Employee Directory
+          
+
+                        <!--    search form    -->
+
+            <form action="/search">
+              <label>Search
+                <input type="text" name="employee_name" placeholder="first name">
+              </label>
+            </form>
+
+            </p>
+          </div>
+                        <!-- flashed messages -->
+
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          {% for message in messages %}
+          <ul class="flashes">
+              <li>{{message}}</li>
+          </ul>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+
+
+
+          <div class="mastfoot">
+            <div class="inner">
+                <p>Copyright Ubermelon 2014. All rights reserved.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    </body>
+</html>

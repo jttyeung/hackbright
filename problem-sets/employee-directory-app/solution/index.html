@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<title>Solution</title>
+<link rel="stylesheet" href="http://fellowship.hackbrightacademy.com/tools/homework.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="solution">
+<h1 class="title">Solution</h1>
+
+<div class="section" id="setting-up">
+<h1>Setting Up</h1>
+<p>First things first, we need to set up our environment and install all of our
+dependencies or we'll get a &quot;no module named flask&quot; error.</p>
+<pre class="literal-block">
+$ virtualenv env
+  ...
+$ source env/bin/activate
+(env)$ pip install -r requirements.txt
+</pre>
+<p>Woot! To make sure that ran, we can do a <cite>pip freeze</cite></p>
+<pre class="literal-block">
+(env)$ pip freeze
+
+  Flask==0.10.1
+  Jinja2==2.7.3
+  MarkupSafe==0.23
+  Werkzeug==0.9.6
+  itsdangerous==0.24
+  wsgiref==0.1.2
+</pre>
+<p>And then we can run our app:</p>
+<pre class="literal-block">
+(env)$ python directory.py
+
+ * Running on <a class="reference external" href="http://127.0.0.1:5000/">http://127.0.0.1:5000/</a>
+ * Restarting with reloader
+</pre>
+<p>Huzzah! So we can go check out what Mel broke by opening our browser and going
+to: <a class="reference external" href="http://127.0.0.1:5000/">http://127.0.0.1:5000/</a></p>
+</div>
+<div class="section" id="fixing-bugs">
+<h1>Fixing Bugs</h1>
+<p>Now, what did Mel do? He says he was rooting around in our html, first on the
+homepage. So let's open up <tt class="docutils literal">home.html</tt> (it's in the templates folder) and
+check the action for our form.</p>
+<pre class="literal-block">
+&lt;form action=&quot;/search&quot;&gt;
+  &lt;label&gt;Search
+  ...
+</pre>
+<p>Looks fine, but let's double check the route in our python code:</p>
+<pre class="literal-block">
+&#64;app.route(&quot;/employee_search&quot;)
+def get_employee_details():
+    &quot;&quot;&quot;this is the 'action' we use for our searches.&quot;&quot;&quot;
+    ...
+</pre>
+<p>AHA! the name of our route is actually <tt class="docutils literal">/employee_search</tt> and not <tt class="docutils literal">/search</tt>.
+Change the <tt class="docutils literal">action</tt> attribute in our form and it should start working.</p>
+<p>Type in a name and we'll see that the employee details page is all messed up.
+It's not printing out the employee's position and the email and favorite foods are
+switched. Let's take a look at <tt class="docutils literal">employee_details.html</tt>.</p>
+<p>Oh Mel.</p>
+<p>He forgot the curly braces indicated a Jinja variable around <cite>details['position']</cite>.
+Let's add them in and that's one bug down. To fix the email/favorite food mixup
+we just have to switch the positions of the two Jinja variables.</p>
+<p>And we're done! High five.</p>
+</div>
+</div>
+</body>
+</html>
