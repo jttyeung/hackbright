@@ -6,18 +6,13 @@
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
 </head>
 <body>
-    <p>There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab. When {{ person }} went to pick it up, it burst into flames in a totally {{ adjective }} way. 
-        {% if places|length == 1 %}
-            It landed on {{ places }} 
-        {% endif %}
+    <p>I was {{ verbing }} at the {{ place }} the other day when I heard {{ holiday_song }} come on the radio. I was feeling really {{ adjective1 }} and I’m pretty sure I looked super {{ adjective2 }} because {{ name1 }} walked in and almost {{ verbed1 }}. Seriously, she {{ verbed2 }} for close to {{ amount_of_time1 }}!</p>
 
-        {% if places|length > 1 %}
-            It landed on 
-                {% for place in places[:-1] %}
-                    {{ place }},  
-                {% endfor %}
-            and {{places[-1]}}.    
-        {% endif %}
+    <p>This time every year I {{ verb }} all the time because I get really excited thinking about holiday {{ plural_noun }}! That’s why I was sitting at the {{ place }}: I was really hoping {{ name2 }} would come by and give me at least {{ number }} pieces of holiday {{ food }}!</p>
+
+    <p>That didn’t happen, but suddenly {{ name2 }} {{ verbed3 }} by in a huge {{ noun }} on wheels dressed up as {{ singer }}. I know {{ adjective3 }} things happen around the holidays, but this didn’t make any sense! I picked up the phone to call {{ name3 }}, but the phone turned into a big pile of {{ messy_food }} and dripped all the way down to my {{ body_part }}!</p>
+
+    <p>Then my alarm clock went off for about {{ amount_of_time2 }}. It was all a dream! I had a ton of {{ holiday_food }} before I went to sleep. Maybe that’s what gave me the crazy dream!</p>
     </p>
 </body>
 </html>
