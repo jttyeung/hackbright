@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Melon Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if session.get('cart') %}
+            {% for item in session['cart'] %}
+
+        <tr>
+            <td>Ancient Watermelon</td>
+            <td>5</td>
+            <td>$3.00</td>
+            <td>$15.00</td>
+        </tr>
+
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+    <h3>Total: $27.00</h3>
+
+    <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
+
+{% endblock %}
