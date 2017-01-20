@@ -9,7 +9,7 @@ class ShippingTestCase(unittest.TestCase):
 
     def test_cali(self):
         """Test shipping for California."""
- 
+
         cali_shipping = shipping.calculate_shipping('CA')
         self.assertEqual(cali_shipping, 0)
 
@@ -18,7 +18,7 @@ class ShippingTestCase(unittest.TestCase):
         """Test shipping for Alaska."""
 
         ak_shipping = shipping.calculate_shipping('AK')
-        self.assertEqual(ak_shipping, 0)
+        self.assertEqual(ak_shipping, 20)
 
 
     def test_indiana(self):
@@ -44,7 +44,7 @@ class MelonSiteIntegrationTestCase(unittest.TestCase):
 
         result = self.client.get('/')
         self.assertEqual(result.status_code, 200)
-        self.assertIn('<h1>Welcome to Squysh!</h1>', result.data)
+        self.assertIn('<h1>Welcome to Ubermelon!</h1>', result.data)
 
 
     def test_melon_order_form(self):
@@ -60,12 +60,12 @@ class MelonSiteIntegrationTestCase(unittest.TestCase):
     def test_melon_order(self):
         """Test submitting an order."""
 
-        result = self.client.post('/process_order', 
+        result = self.client.post('/process_order',
                                   data={'melon_id': 'alib',
                                         'qty': '4',
-                                        'state': 'CA'}, 
+                                        'state': 'CA'},
                                   follow_redirects=True)
-        
+
         self.assertEqual(result.status_code, 200)
 
         # Make sure the order total is in the resulting page, and that it's
@@ -80,7 +80,7 @@ class MelonSiteIntegrationTestCase(unittest.TestCase):
 
         result = self.client.get('/melon/alib')
         self.assertEqual(result.status_code, 200)
-        self.assertIn('Crenshaw', result.data)
+        self.assertIn('Ali Baba Watermelon', result.data)
 
 
 if __name__ == '__main__':
