@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Details for {{ melon_info['name'] }}{% endblock %}
+{% block heading %}{{ melon_info['name'] }}{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <img class="detail-img" src="{{ melon_info['img_url'] }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4 text-centered">
+      <table class="table">
+        <tr><td>Color</td><td>{{ melon_info['color'] }}</td></tr>
+        <tr><td>Type</td><td>{{ melon_info['category'] }}</td></tr>
+        <tr><td>Price</td><td>{{ '$%0.2f'| format(melon_info['price']|float) }}</td></tr>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4 text-center">
+        <a class="btn btn-default" href="/order_melons" role="button">
+          Order Melons
+        </a>
+        <a class="btn btn-default" href="/melons" role="button">
+          View Melons
+        </a>
+      </div>
+    </div>
+
+{% endblock %}

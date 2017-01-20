@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Ubermelon Home Page{% endblock %}
+{% block heading %}Welcome to Ubermelon!{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <img id="large-logo" src="/static/images/ubermelon-logo.png">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4 text-center">
+      <a class="btn btn-default" href="/order_melons" role="button">
+        Order Melons
+      </a>
+      <a class="btn btn-default" href="/melons" role="button">
+        View Melons
+      </a>
+    </div>
+  </div>
+{% endblock %}

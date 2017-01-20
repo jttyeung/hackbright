@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Ubermelon's Artisinal, Bespoke Melon Selection{% endblock %}
+{% block heading %}Ubermelon's Artisinal, Bespoke Melon Selection{% endblock %}
+
+{% block content %}
+  <div class="row">
+  {% for id in sorted_melon_ids %}
+    <div class="col-xs-12 col-s-6 col-lg-4">
+      <div class="melon-well">
+        <a href="/melon/{{ id }}">
+          <img class="melon-img" src="{{ melons[id]['img_url'] }}">
+        </a>
+        <a href="/melon/{{ id }}">
+          <h3 class="melon-title">{{ melons[id]['name'] }}</h3>
+        </a>
+        <div class="table melon-info">
+          {{ melons[id]['color'] }} {{ melons[id]['category'] }},
+          {{ '$%0.2f'| format(melons[id]['price']|float) }}
+        </div>
+        {% if not melons[id]['seedless'] %}
+          <div class="alert alert-danger text-center">This melon has seeds</div>
+        {% endif %}
+      </div>
+    </div>
+
+  {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Order some melons!{% endblock %}
+{% block heading %}Fresh, delicious melons. Delivered to your doorstep.{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-xs-12">
+    <form action="process_order" class="form-horizontal" method="POST">
+      <div class="form-group">
+        <label for="melon_id" class="col-sm-2 control-label">Melon Type</label>
+        <div class="col-xs-6">
+          <select class="form-control" id="melon_id" name="melon_id">
+            {% for id, name in sorted_melons %}
+              <option value="{{ id }}">{{ name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="quantity" class="col-sm-2 control-label">Quantity</label>
+        <div class="col-xs-2">
+          <input type="number" id="quantity" name="qty">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="state" class="col-sm-2 control-label">Shipping Destination</label>
+        <div class="col-xs-6">
+          <select class="form-control" id="state" name="state">
+            {% for abbrev, name in states %}
+              <option value="{{ abbrev }}">{{ name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Send me some melons!</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

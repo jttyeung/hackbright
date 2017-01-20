@@ -1,0 +1,51 @@
+body {
+    background: url('http://cdn.backgroundhost.com/backgrounds/subtlepatterns/arches.png');
+}
+
+header, footer {
+    margin: 20px;
+    padding: 7px;
+    color: #000;
+}
+
+header {
+    border-bottom: 1px black solid;
+}
+
+#tagline {
+    size: 150%;
+}
+
+#logo {
+    width: 20px;
+}
+
+#large-logo {
+    padding-bottom: 20px;
+}
+
+.page-title {
+    height: 100px;
+}
+
+.melon-img {
+    width: 100px;
+    float: left;
+    margin-right: 10px;
+}
+
+.melon-info {
+    display: inline-block;
+}
+
+.melon-well {
+    min-height: 220px;
+    margin: 10px 0;
+    border: 1px black solid;
+    padding: 10px;
+    background-color: #eee;
+}
+
+.detail-img {
+    width: 500px;
+}
