@@ -1,12 +1,11 @@
-<!doctype html>
-<html>
-<head>
-    <title>Home Page</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-  <h1>This is the sample home page.</h1>
-  <p><a href="/application-form">We're hiring! Click here to apply for a job with us!</a></p>
+{% block title %}Kitteh World{% endblock %}
+{% block heading %}Welcome to Kitteh World{% endblock %}
 
-</body>
-</html>
+{% block body %}
+
+  <h2>Where Kittehs Rule!</h2>
+  <p><a href="/application-form">We're hiring! Click here to apply to kitteh with us!</a></p>
+
+{% endblock %}
