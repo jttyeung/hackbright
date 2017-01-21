@@ -1,11 +1,8 @@
-<!doctype html>
-<html>
-<head>
-    <title>Application Response</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<!-- fill this in -->
+{% block title %}Application Submitted{% endblock %}
+{% block heading %}Application Successfully Submitted{% endblock %}
 
-</body>
-</html>
+{% block body %}
+  <p>Thank you, {{ firstname }}, for applying to be a {{ jobtitle }} at Kitteh. We have recorded your minimum salary requirement is ${{ '{:20,.2f}'.format(salaryrequirement) }}. We'll be in contact with you soon about your application.</p>
+{% endblock %}
