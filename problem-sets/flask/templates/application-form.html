@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Application Form{% endblock %}
+{% block heading %}Application for Kitteh{% endblock %}
+
+{% block body %}
+  <h2><span class="description">Please fill out this application form to apply to an open position at Kitteh.</span></h2>
+
+  <form action="/application-success" method="POST">
+
+    <p><label for="firstname">First Name: </label><input id="firstname" type="text" name="firstname" required></p>
+    <p><label for="lastname">Last Name: </label><input id="lastname" type="text" name="lastname" required></p>
+    <p><label for="salaryrequirement">Salary Requirement: </label><input id="salaryrequirement" type="number" name="salaryreq" min="0" required></p>
+
+    <fieldset>
+      <legend>Position Applying for:</legend>
+      <input id="softwareengineer" type="radio" name="position" value="Software Engineer" required><label for="softwareengineer">Software Engineer</label><br>
+      <input id="qaengineer" type="radio" name="position" value="QA Engineer" required><label for="qaengineer">QA Engineer</label><br>
+      <input id="productmanager" type="radio" name="position" value="Product Manager" required><label for="productmanager">Product Manager</label><br>
+    </fieldset>
+
+    <p><input type="submit" name="submit" value="Submit"></p>
+  </form>
+{% endblock %}
