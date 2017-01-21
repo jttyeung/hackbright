@@ -1,0 +1,14 @@
+input {
+  background-color: #ffff00;
+}
+
+#lastname {
+  font-weight: bold;
+}
+
+.description {
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 4px;
+}
