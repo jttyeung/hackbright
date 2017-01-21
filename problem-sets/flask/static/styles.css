@@ -1,3 +1,11 @@
+h1 {
+  font-family: 'Satisfy', cursive;
+}
+
+h2, body {
+  font-family: 'Roboto', sans-serif;
+}
+
 input {
   background-color: #ffff00;
 }
@@ -7,8 +15,5 @@ input {
 }
 
 .description {
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
-  border-radius: 4px;
+  font-size: 0.7em;
 }
