@@ -18,7 +18,8 @@ def homepage():
 @app.route('/application-form')
 def application_form():
   """Show application form"""
-  return render_template('application-form.html')
+  positions = ["Software Engineer", "QA Engineer", "Product Manager", "Kitteh Master", "Furball Remover"]
+  return render_template('application-form.html', positions=positions)
 
 @app.route('/application-success', methods=['POST'])
 def application_success():

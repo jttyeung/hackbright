@@ -4,21 +4,36 @@
 {% block heading %}Application for Kitteh{% endblock %}
 
 {% block body %}
-  <h2><span class="description">Please fill out this application form to apply to an open position at Kitteh.</span></h2>
 
-  <form action="/application-success" method="POST">
 
-    <p><label for="firstname">First Name:&nbsp;</label><input id="firstname" type="text" name="firstname" required></p>
-    <p><label for="lastname">Last Name:&nbsp;</label><input id="lastname" type="text" name="lastname" required></p>
-    <p><label for="salaryrequirement">Salary Requirement:&nbsp;</label><input id="salaryrequirement" type="number" name="salaryreq" min="0" required></p>
+  {% if positions %}
 
-    <fieldset>
-      <legend>Position Applying for:</legend>
-      <input id="softwareengineer" type="radio" name="position" value="Software Engineer" required><label for="softwareengineer">&nbsp;Software Engineer</label><br>
-      <input id="qaengineer" type="radio" name="position" value="QA Engineer" required><label for="qaengineer">&nbsp;QA Engineer</label><br>
-      <input id="productmanager" type="radio" name="position" value="Product Manager" required><label for="productmanager">&nbsp;Product Manager</label><br>
-    </fieldset>
+    <h2><span class="description">Please fill out this application form to apply to an open position at Kitteh.</span></h2>
 
-    <p><input type="submit" name="submit" value="Submit"></p>
-  </form>
+    <form action="/application-success" method="POST">
+
+      <p><label for="firstname">First Name:&nbsp;</label><input id="firstname" type="text" name="firstname" required></p>
+      <p><label for="lastname">Last Name:&nbsp;</label><input id="lastname" type="text" name="lastname" required></p>
+      <p><label for="salaryrequirement">Salary Requirement:&nbsp;</label><input id="salaryrequirement" type="number" name="salaryreq" min="0" required></p>
+
+        <label for="positionapplying">Position Applying for:</label>
+        <!-- When using a for loop with input type = "radio", I am unable to use a jinja for loop to complete this task because it results in individualized radio buttons. That means I can select multiple radio buttons (positions) on the same form. I ended up having to change this part to a dropdown instead. Is there a way to do it with radio buttons? -->
+          <select id="positionapplying" name="position">
+            {% for position in positions %}
+              <option name="{{ position.lower().replace(' ','') }}" value="{{ position }}">&nbsp;{{ position }}</option>
+            {% endfor %}
+          </select>
+      </fieldset>
+      <br>
+
+      <p><input type="submit" name="submit" value="Submit"></p>
+    </form>
+
+  {% else %}
+
+    <h2>Sorry! There are no Kitteh positions available at this time. Check back later!</h2>
+
+  {% endif %}
+
+
 {% endblock %}
