@@ -7,8 +7,7 @@
 
 
   {% if positions %}
-
-    <h2><span class="description">Please fill out this application form to apply to an open position at Kitteh.</span></h2>
+    <h2><span class="application-header">Please fill out this application form to apply to an open position at Kitteh.</span></h2><br>
 
     <form action="/application-success" method="POST">
 
@@ -25,13 +24,14 @@
           </select>
       </fieldset>
       <br>
+      <br>
 
       <p><input type="submit" name="submit" value="Submit"></p>
     </form>
 
   {% else %}
 
-    <h2>Sorry! There are no Kitteh positions available at this time. Check back later!</h2>
+    <h2><span class="application-header">Sorry! There are no Kitteh positions available at this time. Check back later!</h2>
 
   {% endif %}
 

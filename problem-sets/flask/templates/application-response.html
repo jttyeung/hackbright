@@ -4,6 +4,6 @@
 {% block heading %}Application Successfully Submitted{% endblock %}
 
 {% block body %}
-  <p>Thank you, {{ firstname }} {{ lastname }}, for applying to be a {{ jobtitle }} at Kitteh. We have recorded your minimum salary requirement is ${{ '{:20,.2f}'.format(salaryrequirement) }}. A kitteh will be in contact with you soon about your application.</p>
-  <img class="center-block" src="https://shrinkinkitteh.files.wordpress.com/2014/02/excited-kitteh.jpg" />
+  <h2><span class="application-header">Thank you, {{ firstname }} {{ lastname }}, for applying to be a {{ jobtitle }} at Kitteh. We have recorded your minimum salary requirement is ${{ '{:20,.2f}'.format(salaryrequirement) }}. A kitteh will be in contact with you soon about your application.</span></h2>
+  <img class="img-responsive center-block" src="https://shrinkinkitteh.files.wordpress.com/2014/02/excited-kitteh.jpg" />
 {% endblock %}
