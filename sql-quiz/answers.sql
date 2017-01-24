@@ -362,3 +362,23 @@ internet orders.
 
 
 SELECT SUM(order_total) FROM orders WHERE salesperson_id IS NULL;
+
+
+==========
+26
+
+-----
+
+Challenge: Produce a list of all salespeople and the total amount of orders
+they've sold, while calculating a 15% commission on all of their orders.
+Include their first name, last name, the total of all their sales, and their
+commission. Only report one row per salesperson. Include salespeople who have
+not made any sales.
+
+You will need 'left join' (http://sqlzoo.net/wiki/LEFT_JOIN) and 'group by'
+(http://sqlzoo.net/wiki/SELECT_.._GROUP_BY) clauses to finish this one.
+
+-----
+
+
+SELECT first_name, last_name, sales, commission FROM salespeople LEFT JOIN (SELECT salesperson_id, SUM(order_total) as sales, SUM(order_total * .15) as commission FROM orders GROUP BY salesperson_id) as orders ON salespeople.id = orders.salesperson_id;
