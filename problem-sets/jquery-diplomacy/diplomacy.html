@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        h2 {
+            margin-top: 3em;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+
+<h1>Ubermelon Diplomacy</h1>
+
+
+<h2>Text Change</h2>
+
+<p id="text-to-change">
+    Make it so when you click the button below, this text turns blue.
+    (Keep the size change the same.)
+</p>
+
+<button type="button" id="text-change-btn">Click Me!</button>
+
+<script>
+
+    // define function that will fire on event
+    function changeText(evt) {
+        var text = $("#text-to-change");
+        text.css("font-size", "25px");
+        text.css("color", "red");
+    }
+
+    // attach event handler
+    $("#text-change-btn").on("click", changeText);
+
+</script>
+
+<h2>Light Bulb</h2>
+
+<p>
+    Clicking the light bulb turns it on. Change the Javascript to make it
+    also turn off when you click it again.
+</p>
+
+<img id="lightbulb-img" src="img/pic_bulboff.gif" width="100" height="180">
+
+<p>Click the light bulb to turn on/off the light.</p>
+
+<script>
+
+    // define function that will fire on event
+    function changeImage(evt) {
+        var image = $("#lightbulb-img");
+        if (image.attr('src').indexOf("bulboff") !== -1) {
+            image.attr('src', "img/pic_bulbon.gif");
+        }
+    }
+
+    // attach event handler
+    $('#lightbulb-img').on("click", changeImage);
+
+</script>
+
+
+<h2>Number Validation</h2>
+
+<p>
+    Change the JavaScript to accept a number between 1 and 100, rather
+    than between of 1 and 10.
+</p>
+
+<p>Please input a number between 1 and 10:</p>
+
+<input id="number-input" type="text">
+
+<button type="button" id="number-submit">Submit</button>
+
+<b id="feedback-text"></b>
+
+<script>
+
+    // define function that will fire on event
+    function validateInput(evt) {
+        var number, text;
+
+        // Get the value of input field with id="number-input"
+        number = $('#number-input').val();
+
+        // If 'number' is Not a Number or less than one or greater than 10
+        if (isNaN(number) || number < 1 || number > 10) {
+            text = "Input not valid";
+        } else {
+            text = "Input OK";
+        }
+        $("#feedback-text").html(text);
+    }
+
+    // attach event handler
+    $('#number-submit').on("click", validateInput);
+
+</script>
+
+</body>
+</html>

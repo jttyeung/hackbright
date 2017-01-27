@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<title>Solution</title>
+<link rel="stylesheet" href="http://fellowship.hackbrightacademy.com/tools/homework.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="solution">
+<h1 class="title">Solution</h1>
+
+<pre class="literal-block">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;style&gt;
+        body {
+            font-family: sans-serif;
+        }
+
+        h2 {
+            margin-top: 3em;
+        }
+    &lt;/style&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;Ubermelon Diplomacy&lt;/h1&gt;
+
+
+&lt;h2&gt;Text Change&lt;/h2&gt;
+
+&lt;p id=&quot;text-to-change&quot;&gt;
+    Make it so when you click the button below, this text turns blue.
+    (Keep the size change the same.)
+&lt;/p&gt;
+
+&lt;button type=&quot;button&quot; id=&quot;text-change-btn&quot;&gt;Click Me!&lt;/button&gt;
+
+&lt;script&gt;
+
+    // define function that will fire on event
+    function changeText(evt) {
+        var text = $(&quot;#text-to-change&quot;);
+        text.css(&quot;font-size&quot;, &quot;25px&quot;);
+        text.css(&quot;color&quot;, &quot;blue&quot;);
+    }
+
+    // attach event handler
+    $(&quot;#text-change-btn&quot;).on(&quot;click&quot;, changeText);
+
+&lt;/script&gt;
+
+&lt;h2&gt;Light Bulb&lt;/h2&gt;
+
+&lt;p&gt;
+    Clicking the light bulb turns it on. Change the Javascript to make it
+    also turn off when you click it again.
+&lt;/p&gt;
+
+&lt;img id=&quot;lightbulb-img&quot; src=&quot;img/pic_bulboff.gif&quot; width=&quot;100&quot; height=&quot;180&quot;&gt;
+
+&lt;p&gt;Click the light bulb to turn on/off the light.&lt;/p&gt;
+
+&lt;script&gt;
+
+    // define function that will fire on event
+    function changeImage(evt) {
+        var image = $(&quot;#lightbulb-img&quot;);
+        if (image.attr('src').indexOf(&quot;bulboff&quot;) !== -1) {
+            image.attr('src', &quot;img/pic_bulbon.gif&quot;);
+        }
+        else {
+            image.attr('src', &quot;img/pic_bulboff.gif&quot;);
+        }
+    }
+
+    // attach event handler
+    $('#lightbulb-img').on(&quot;click&quot;, changeImage);
+
+&lt;/script&gt;
+
+
+&lt;h2&gt;Number Validation&lt;/h2&gt;
+
+&lt;p&gt;
+    Change the JavaScript to accept a number between 1 and 100, rather
+    than between of 1 and 10.
+&lt;/p&gt;
+
+&lt;p&gt;Please input a number between 1 and 10:&lt;/p&gt;
+
+&lt;input id=&quot;number-input&quot; type=&quot;text&quot;&gt;
+
+&lt;button type=&quot;button&quot; id=&quot;number-submit&quot;&gt;Submit&lt;/button&gt;
+
+&lt;b id=&quot;feedback-text&quot;&gt;&lt;/b&gt;
+
+&lt;script&gt;
+
+    // define function that will fire on event
+    function validateInput(evt) {
+        var number, text;
+
+        // Get the value of input field with id=&quot;number-input&quot;
+        number = $('#number-input').val();
+
+        // If 'number' is Not a Number or less than one or greater than 10
+        if (isNaN(number) || number &lt; 1 || number &gt; 100) {
+            text = &quot;Input not valid&quot;;
+        } else {
+            text = &quot;Input OK&quot;;
+        }
+        $(&quot;#feedback-text&quot;).html(text);
+    }
+
+    // attach event handler
+    $('#number-submit').on(&quot;click&quot;, validateInput);
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt; 
+</pre>
+</div>
+</body>
+</html>
