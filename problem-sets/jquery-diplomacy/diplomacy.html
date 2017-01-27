@@ -32,7 +32,7 @@
     function changeText(evt) {
         var text = $("#text-to-change");
         text.css("font-size", "25px");
-        text.css("color", "red");
+        text.css("color", "blue");
     }
 
     // attach event handler
@@ -54,10 +54,14 @@
 <script>
 
     // define function that will fire on event
+
     function changeImage(evt) {
         var image = $("#lightbulb-img");
         if (image.attr('src').indexOf("bulboff") !== -1) {
             image.attr('src', "img/pic_bulbon.gif");
+        }
+        else {
+            image.attr('src', "img/pic_bulboff.gif");
         }
     }
 
@@ -74,7 +78,7 @@
     than between of 1 and 10.
 </p>
 
-<p>Please input a number between 1 and 10:</p>
+<p>Please input a number between 1 and 100:</p>
 
 <input id="number-input" type="text">
 
@@ -92,7 +96,7 @@
         number = $('#number-input').val();
 
         // If 'number' is Not a Number or less than one or greater than 10
-        if (isNaN(number) || number < 1 || number > 10) {
+        if (isNaN(number) || number < 1 || number > 100) {
             text = "Input not valid";
         } else {
             text = "Input OK";
