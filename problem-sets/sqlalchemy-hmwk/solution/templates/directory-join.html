@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>All Employees - Nav</title>
+</head>
+<body>
+
+  <h1>All Employees - Nav</h1>
+  <ul>
+    {% for emp in employees %}      
+      {# This is neat -- the rows look like they're just plain      #}
+      {# tuples of (name, phone, dept), so we'd have to talk about  #}
+      {# each item as emp[0], emp[1], emp[2] -- and we could do     #}
+      {# that. But they're a special kind of "named tuple", where   #}
+      {# we can also refer to the elements by their name, like so:  #}
+    <li>
+      {{ emp.name }},
+      {{ emp.phone }},
+      {{ emp.dept }}
+    </li>
+    {% endfor %}
+  </ul>
+
+</body>

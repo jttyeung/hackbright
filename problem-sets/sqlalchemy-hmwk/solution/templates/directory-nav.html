@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <title>All Employees - Nav</title>
+</head>
+<body>
+
+  <h1>All Employees - Nav</h1>
+  <ul>
+    {% for emp in employees %}
+    <li>
+      {{ emp.name }},
+      {# When we navigate to the department, it will run an SQL   #}
+      {# query for that department -- this is the inefficient     #}
+      {# part.                                                    #}
+      {{ emp.dept.dept }},
+      {{ emp.dept.phone }}
+    </li>
+    {% endfor %}
+  </ul>
+
+</body>
