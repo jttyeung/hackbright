@@ -21,7 +21,7 @@ class Employee(db.Model):
     __tablename__ = "employees"
 
     emp_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20), nullable=False, unique=True)
+    name = db.Column(db.String(30), nullable=False, unique=True)
     state = db.Column(db.String(2), nullable=False, default='CA')
     fav_color = db.Column(
         db.String(20), nullable=True, default='Unknown')
@@ -210,6 +210,6 @@ if __name__ == "__main__":
 
     # Create our tables and some sample data
     db.create_all()
-    example_data()
+    # example_data()
 
     print "Connected to DB."
