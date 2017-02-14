@@ -14,15 +14,13 @@
       <p><label for="firstname">First Name:&nbsp;</label><input id="firstname" type="text" name="firstname" required></p>
       <p><label for="lastname">Last Name:&nbsp;</label><input id="lastname" type="text" name="lastname" required></p>
       <p><label for="salaryrequirement">Salary Requirement:&nbsp;</label><input id="salaryrequirement" type="number" name="salaryreq" min="0" required></p>
-
-        <label for="positionapplying">Position Applying for:</label>
-        <!-- When using a for loop with input type = "radio", I am unable to use a jinja for loop to complete this task because it results in individualized radio buttons. That means I can select multiple radio buttons (positions) on the same form. I ended up having to change this part to a dropdown instead. Is there a way to do it with radio buttons? -->
-          <select id="positionapplying" name="position">
-            {% for position in positions %}
-              <option name="{{ position.lower().replace(' ','') }}" value="{{ position }}">&nbsp;{{ position }}</option>
-            {% endfor %}
-          </select>
+      <fieldset>
+        <legend>Position Applying for:</legend>
+        {% for position in positions %}
+        <input id="{{ position.lower().replace(' ','') }}" type="radio" name="position" value="{{ position }}" required><label for="{{ position.lower().replace(' ','') }}">&nbsp;{{ position }}</label><br>
+        {% endfor %}
       </fieldset>
+
       <br>
       <br>
 
