@@ -1,0 +1,57 @@
+Recursion
+
+1. In your own words, what is recursion?
+>>> Recursion is the process of reusing/calling a function within itself,
+>>> and can be used in place of an iterative function.
+
+2. Why is it necessary to have a base case?
+>>> The base case is what we use to tell the recursion function that
+>>> it has reached its end goal and it can stop recursing.
+
+
+
+Graphs
+
+1. What is a graph?
+>>> A graph is a tree that has nodes which loop/link back on itself.
+
+2. How is a graph different from a tree?
+>>> Trees are directed, whereas graphs have leaf node(s) that loop back
+>>> to any node within a tree.
+
+3. Give an example of something that would be good to model with a graph.
+>>> Friends on facebook; Person A would be connected to a second degree
+>>> friend which may connect to another person who could be connected to
+>>> Person A directly.
+
+
+
+Data Structure                Index     Search    Add-R     Add-L     Pop-L     Pop-R
+Python List (Array)            O(1)      O(n)      O(1)      O(n)      O(n)      O(1)
+Linked List                    O(n)      O(n)      O(n)      O(1)      O(1)      O(n)
+Doubly-Linked List             O(n)      O(n)      O(1)      O(1)      O(1)      O(1)
+Queue (as Array)                X         X        O(1)       X        O(n)       X
+Queue (as LL or DLL)            X         X        O(1)       X        O(1)       X
+Stack (as Array, LL, or DLL)    X         X        O(1)       X         X        O(1)
+Deque (as DLL)                  X         X        O(1)      O(1)      O(1)      O(1)
+
+
+
+Data Structure          Get         Add     Delete    Iterate     Memory
+Dictionary (Hash Map)   O(1)        O(1)     O(1)       O(n)      medium
+Set (Hash Map)          O(1)        O(1)     O(1)       O(n)      medium
+Binary Search Tree      O(log n)    O(1)     O(1)       O(1)      a little
+Tree                    O(n)        O(1)     O(1)       O(1)      a little
+
+
+
+Sorting
+
+1. Describe in words how the Bubble Sort algorithm works.
+>>> The bubble sort looks at pairs of numbers, iterating through an entire list. Each pair is compared and the higher number is "bubbled" to the top. The process repeats again and again at the beginning of the list, until all numbers are in order.
+
+2. Describe in words how the Merge Sort algorithm works.
+>>> Merge sort splits a list in half over and over again until it becomes multiple lists of one number. It does this by first breaking the list up until it finds the first two numbers to compare to each other, and sorts them, then re-pairs them in a merged list of 2 numbers. It does this until all the numbers have been paired up, and then sorts/pairs together those pairs and so on until it's a single sorted list.
+
+3. Describe in words how the Quick Sort algorithm works.
+>>> The quick sort has a chosen pivoting point (item) in the list and all numbers around the pivot point will swap to the right of the pivot point if it is greater than, or left if it is less than the pivot. The two sides of the pivot are then treated as separate lists. Each list finds their own pivot and performs the same left/right sort as described before. This process repeats until each item is in a sorted list.
