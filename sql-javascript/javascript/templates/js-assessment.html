@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Skills JavaScript</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+
+<h1>JavaScript Assessment</h1>
+<p>
+  For each numbered problem, fill in the corresponding <code>&lt;script&gt;</code>
+  section with JavaScript to solve the problem. The location of this file is
+  <strong>templates/js-assessment.html</strong>.</p>
+<p>
+  <b>Note:</b> you should only add JavaScript; you cannot change the HTML otherwise <b>at all</b>.
+</p>
+
+<img src="http://i57.tinypic.com/15fhuo8.jpg">
+
+
+
+<h2>Plain JavaScript</h2>
+<p>You may not use jQuery for this section!</p>
+
+
+
+<h3>Manipulating the DOM</h3>
+<p>Change the word "hello" to "goodbye" when the button is pressed.</p>
+<p>(Don't get rid of the italics tag itself, though!)</p>
+
+<fieldset>
+  <i id="message-to-change">hello</i>
+  <button id="change-hello-to-goodbye-button">Turn <b>Hello</b> Into <b>Goodbye</b></button>
+  <!-- Hey, look, that was another way to do a button - what might it be good for? -->
+  <!-- Is this so that we can label elements on the button and manipulate them with jQuery/JS? -->
+</fieldset>
+
+<script>
+  "use strict";
+
+  var message = document.getElementById('message-to-change');
+  var button = document.getElementById('change-hello-to-goodbye-button');
+
+  button.addEventListener('click', changeMessage);
+
+  function changeMessage(evt){
+      message.innerHTML = 'goodbye';
+  }
+
+</script>
+
+<div class="hint">
+  <div>
+    Don't know or don't remember how to change the text of an element you find in JavaScript?
+    That's what the <code>console.dir(object)</code> feature is so useful for&mdash;it gives
+    you the complete list of properties/methods on an object!
+  </div>
+</div>
+
+
+
+<h3>Preventing Form Submission</h3>
+<p>
+  Normally, for this form, it submits to <code>some-script</code>. Make it pop up an
+  alert box instead.
+</p>
+
+<fieldset>
+  <form action="some-script" id="prevent-form-submission-form">
+    <input type="text" name="favorite-color" id="favorite-color-field">
+    <input type="submit" id="prevent-form-submission-button" value="Just an Alert, Please!">
+  </form>
+</fieldset>
+
+<script>
+  "use strict";
+
+  var submitBtn = document.getElementById('prevent-form-submission-button');
+
+  submitBtn.addEventListener('click', preventSubmit)
+
+  function preventSubmit(evt) {
+      alert('Not today!')
+      evt.preventDefault();
+  }
+
+</script>
+
+<div class="hint">
+  <div>
+    Remember that you can listen for events on forms as well as buttons. What event should you listen for here?
+  </div>
+</div>
+
+
+
+<h3>Reversing a String</h3>
+<p>
+  There's some incomplete JavaScript code below. When the button is pushed, it pops up an
+  alert box with a message. Reverse the order of the message, so "Porcupines are cute" would
+  become "etuc era senipucroP". You must do this reversal programmatically; you cannot just
+  type in the reversed string yourself!
+</p>
+
+<fieldset>
+  <input type="button" id="reverse-string-button" value="!nottuB">
+</fieldset>
+
+<script>
+  "use strict";
+
+ function reverseString() {
+     var msg = "Porcupines are cute";
+     var reversedMsg = Array.from(msg).reverse()
+     var newMsg = reversedMsg.join('');
+
+     alert(newMsg);
+ }
+
+ var button = document.getElementById('reverse-string-button');
+
+ button.addEventListener('click', reverseString);
+
+</script>
+
+
+
+<h2>jQuery</h2>
+<p>You should use jQuery for these parts.</p>
+<p>We didn't include jQuery in this document, though&mdash;so your first task is to include it!</p>
+<div class="hint">
+  <div>
+    Remember you need a script tag in the head of this page that pulls in jQuery's source code.
+  </div>
+</div>
+
+
+
+<h3>Down With Cats!</h3>
+<p>
+  Due to complaints from the dog-loving members of our staff about our cat-centered curriculum, we need you to change
+  the following image of a cat to one of a dog when you double-click on the image.
+  Feel free to Google for any cute dog photo you
+  would like to use. Please use jQuery to complete this task.
+</p>
+
+<fieldset>
+  <img src="https://s-media-cache-ak0.pinimg.com/236x/d3/e9/fc/d3e9fc222c9bd0d12e0ff126acf7df00.jpg"
+       alt="Adorbz" id="kittenz-rule">
+</fieldset>
+
+<script>
+  "use strict";
+
+  $('#kittenz-rule').on('dblclick', function(evt){
+      $('#kittenz-rule').attr('src','https://s-media-cache-ak0.pinimg.com/564x/ba/6e/2d/ba6e2d22b237115b6f40df24471424e2.jpg');
+      }
+  );
+
+</script>
+
+<div class="hint">
+  <div>
+    How do you change an attribute with jQuery?
+  </div>
+</div>
+
+
+
+<h3>Number Guessing Game</h3>
+<p>
+  Make the classic "guess-a-number-between-1-and-100" in JavaScript.
+</p>
+<p>
+  The game should start when the user presses the play button. The funtion should first disable the button. The function should then pick a random integer from 1 to 100. Use the div with id 'number-guessing-msg' to ask the user to guess a number. This div will also display whether the guess was too high or too low. Once the user guesses the right number, three things should happen: first, the div should congratulate the player; second, the form should be disabled; third, the play button should be re-enabled.
+</p>
+
+<fieldset>
+  <input type="button" id="play-guessing-game" value="Play!">
+  <form action="do-not-go-here" id="guessing-game-form">
+    <input id="number-guessed" name="number-guessed" type="number" placeholder="Guess" disabled>
+    <!-- hey! go read MDN about the "number" input type. Cool, huh? -->
+    <input type="submit" id="try-this-number" value="Guess" disabled>
+    <div id="number-guessing-msg"></div>
+  </form>
+</fieldset>
+
+<script>
+  "use strict";
+
+  $('#play-guessing-game').on('click', playGame);
+
+  function playGame() {
+      // enable game fields
+      $('#play-guessing-game').attr('disabled', 'disabled');
+      $('#number-guessed').removeAttr('disabled');
+      $('#try-this-number').removeAttr('disabled');
+
+      // generate a random number
+      var randNum = Math.ceil(Math.random() * 100);
+
+      // ask user to guess number
+      $('#number-guessing-msg').html('Guess a number between 1 and 100!');
+
+      // checks user guess
+      $('#try-this-number').on('click', checkGuess);
+
+      function checkGuess(evt) {
+          // prevents submitting guess
+          evt.preventDefault();
+
+          // reassigns guess value
+          var guess = $('#number-guessed').val();
+
+          // checks if number is within bounds and returns a message if not
+          if (guess < 1 || guess > 100){
+              $('#number-guessing-msg').html('That\'s not a number between 1 and 100! Try another guess.');
+
+          } else {
+          // checks valid guess and returns a message
+              if (guess < randNum) {
+                $('#number-guessing-msg').html('Too low!');
+              } else if (guess > randNum) {
+                $('#number-guessing-msg').html('Too high!');
+              } else {
+                $('#number-guessing-msg').html('Congrats, you\'ve guessed my number!');
+
+                // resets the game
+                $('#play-guessing-game').removeAttr('disabled');
+                $('#number-guessed').attr('disabled', 'disabled');
+                $('#try-this-number').attr('disabled', 'disabled');
+                $('#number-guessed').val('');
+                $('#number-guessed').attr('placeholder', 'Guess');
+
+              }
+          }
+
+      }
+  }
+
+
+
+</script>
+
+
+<div class="hint">
+  <div>
+    How do you turn the string "42" into the integer 42 in JavaScript?
+  </div>
+</div>
+
+
+
+<h2>AJAX!</h2>
+
+
+
+<h3>T-Rex Attack!!</h3>
+<p>
+  Ruler of the T-Rexes; Champion of Peace or Destroyer of Worlds?
+</p>
+<p>It all depends on the overall effectiveness of the attack.</p>
+<p>
+  Write code so that when the user submits the form, an AJAX request is made to the route <code>/t-rex-attack.json</code>. This route will expect the form value at the name "victim-name." The route will return the results of the T-Rex attack you launch: a summary of the havoc you wreaked and a reconnaissance image of the T-Rex you sent. We've provided a callback function, <code>showTRexResults</code>, to calculate the number of casualties and display the intel.
+</p>
+<p>
+  With great power comes great responsibility. Go nuts.
+</p>
+
+
+<fieldset>
+  <form id="t-rex-form">
+    You're about to launch a T-Rex attack on
+    <input id="victim-name" type="text" name="victim-name" placeholder="Choose victim" required>
+    <br>
+    <input type="submit" id="Attack" value="Launch Attack!">
+  </form>
+  <div id="t-rex-img" class="t-rex-results"></div>
+  <div id="t-rex-response" class="t-rex-results"></div>
+  <div id="t-rex-casualties" class="t-rex-results"></div>
+</fieldset>
+
+<script>
+  "use strict";
+
+  // NOTE: DO NOT CHANGE THE CODE OF THIS FUNCTION
+  function showTRexResults(results) {
+
+    //get the reaction string out of the results object
+    var attackResult = results.reaction;
+    var tRexURL = results.img;
+
+    //create t-rex image element
+    var tRexPhoto = $("<img>").attr("src", tRexURL);
+
+    //calculate the number eaten by the T-Rex
+    var numDead = Math.floor(Math.random() * 10000)
+
+    //clear and repopulate the appropriate spots
+    $("#victim-name").val("");
+    $(".t-rex-results").empty();
+    $("#t-rex-response").append(attackResult);
+    $("#t-rex-casualties").append("Innocent bystanders harmed: " + numDead);
+    $("#t-rex-img").append(tRexPhoto);
+  }
+
+  function doAttack(evt) {
+      evt.preventDefault();
+      var attackVictim = $('#victim-name').val();
+      $.post('/t-rex-attack.json', attackVictim, showTRexResults);
+  }
+
+  $('#Attack').on('click', doAttack);
+
+</script>
+
+<div class="hint">
+  <div>
+    What type of request makes more sense here, GET or POST?
+  </div>
+</div>
+
+
+</body>
+</html>
